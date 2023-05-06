@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.first-look {
+    height: 120vh;
+    margin-top: 20vh;
+  }
+  .first-look-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      height: 50%;
+    }
+  
+  .first-look  h2 {
+        color: #f58888;
+        font-size: 50px;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+.first-look-link{
+    color : #8a0758;
+    font-size: 20px;
+    text-transform: lowercase;
+    letter-spacing: 0px;
+} 
