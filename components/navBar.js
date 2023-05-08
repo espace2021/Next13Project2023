@@ -1,7 +1,21 @@
+'use client';
 import Link from 'next/link';
-
+import Image from 'next/image';
+import { auth } from "../firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 
 export default function NavBar() {
+
+  const [user] = useAuthState(auth);
+ 
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithRedirect(auth, provider);
+  };
+  const signOut = () => {
+    auth.signOut();
+  };
 
   return (
     <div>
@@ -29,7 +43,25 @@ export default function NavBar() {
         <li>
           <Link href="/products/add" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Add Product</Link>
         </li>
-      
+        <li>
+        {user ? (
+        <button onClick={signOut} type="button">
+          Sign Out
+        </button>
+      ) : (
+        <button>  Chat Real Time
+          <Image
+            onClick={googleSignIn}
+            src="/images/GoogleSignin.png"
+            alt="sign in with google"
+            type="button"
+            width="40"
+            height="40"
+            priority={false} 
+          />
+        </button>
+      )}
+      </li>
       </ul>
     </div>
   </div>

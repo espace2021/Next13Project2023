@@ -1,10 +1,13 @@
+'use client';
 import './globals.css'
-import { Inter } from 'next/font/google'
 import NavBar from '../components/navBar'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-const inter = Inter({ subsets: ['latin'] })
+import { auth } from "../firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+import ChatBox from "../components/chat/chatBox"
+import Welcome from '../components/chat/Welcome';
 
 export const metadata = {
   title: 'Create Next App',
@@ -12,9 +15,16 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }) {
+  const [user] =useAuthState(auth);
   return (
     <html lang="en">
-      <body className={inter.className}><NavBar/>{children}</body>
+       <head />
+      <body><NavBar/>
+      <div>
+      {!user? <Welcome /> :<ChatBox /> } 
+      </div>
+      {children}
+      </body>
     </html>
   )
 }
