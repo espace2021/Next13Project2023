@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mui/base": "^5.0.0-alpha.128",
     "autoprefixer": "10.4.14",
     "bootstrap": "^5.2.3",
     "eslint": "8.39.0",
@@ -23,6 +24,7 @@
     "react-dom": "18.2.0",
     "react-filepond": "^7.1.2",
     "react-firebase-hooks": "^5.1.1",
+    "react-paginate": "^8.2.0",
     "react-responsive-carousel": "^3.2.23",
     "tailwindcss": "3.3.1"
   }
